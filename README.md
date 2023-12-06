@@ -7,5 +7,5 @@ Combine kracken/bracken result tables into biom and tsv files using taxpasta
 ## Description
 This workflow will taken processed/raw fastq files, run them through a Kraken2/Bracken workflow, and combine results into one file using taxpasta. Outputs can then be implemented into downstream analyses like phyloseq. 
 
-## Metadata
+## Databases
 Setting up this pipeline for execution requires a built kraken/bracken database. For example to run a 16S workflow a custom Kraken/Bracken database must be built specifying 16S sequence reads lengths (~1600bp). 

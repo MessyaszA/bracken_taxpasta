@@ -21,7 +21,7 @@ process TAXPASTA {
 
     script:
     """
-    taxpasta merge $reads -p bracken --output-format BIOM -o biom_merge.biom --taxonomy $params.kraken_db_tax --add-lineage --add-name
-    taxpasta merge $reads -p bracken --output-format TSV -o tsv_merge.tsv --taxonomy $params.kraken_db_tax --add-lineage --add-name
+    taxpasta merge $reads -p bracken --output-format BIOM -o biom_merge.biom --taxonomy $params.kraken_db_tax --add-lineage
+    taxpasta merge $reads -p bracken --output-format TSV -o tsv_merge.tsv --taxonomy $params.kraken_db_tax --add-lineage
     """
 }

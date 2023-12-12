@@ -19,12 +19,36 @@ process Kraken2 {
         path(db)
 
     output:
+        tuple val(meta), path("*kraken2.krona"), emit: kraken2krona
         tuple val(meta), path("*_kraken2.report"), emit: report
         path ("*_kraken2.output"), emit: kraken_output
 
     script:
         """
         kraken2 -db $db --report ${meta}_kraken2.report $reads > ${meta}_kraken2.output
+        cut -f 2,3 ${meta}_kraken2.output > ${meta}_kraken2.krona
+        """
+}
+
+process Krona {
+
+    container "alemenze/kraken2-docker"
+    label 'process_medium'
+
+    publishDir "${params.outdir}/kraken2_krona/${meta}",
+        mode: "copy",
+        overwrite: true,
+        saveAs: { filename -> filename }
+    
+    input:
+        tuple val(meta), path(krona_in)
+    
+    output:
+        path("*_taxonomy_krona.html")
+
+    script:
+        """
+        ktImportTaxonomy -o ${meta}_kraken2_taxonomy_krona.html $krona_in
         """
 }
 

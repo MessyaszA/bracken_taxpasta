@@ -12,7 +12,8 @@ nextflow.enable.dsl = 2
 
 include { Kraken2 } from './tools/bracken'
 include { BRACKEN } from './tools/bracken'
-include { TAXPASTA } from './tools/taxpasta'
+include { Krona } from './tools/bracken'
+include { TAXPASTA } from './tools/taxpasta' 
 
 ////////////////////////////////////////////////////
 /* --           RUN MAIN WORKFLOW              -- */
@@ -28,6 +29,10 @@ workflow {
         Kraken2(
             ch_ont_fastq,
             params.kraken_db
+        )
+
+        Krona(
+            Kraken2.out.kraken2krona
         )
 
         BRACKEN(

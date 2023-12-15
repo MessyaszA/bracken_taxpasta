@@ -58,7 +58,7 @@ process Krona {
     container "alemenze/kraken2-docker"
     label 'process_medium'
 
-    publishDir "${params.outdir}/kraken2_krona/${meta}",
+    publishDir "${params.outdir}/bracken_krona/${meta}",
         mode: "copy",
         overwrite: true,
         saveAs: { filename -> filename }

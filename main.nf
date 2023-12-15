@@ -31,13 +31,13 @@ workflow {
             params.kraken_db
         )
 
-        Krona(
-            Kraken2.out.kraken2krona
-        )
-
-        BRACKEN(
+         BRACKEN(
             Kraken2.out.report,
             params.kraken_db
+        )
+
+        Krona(
+            Kraken2.out.bracken_krona
         )
 
         TAXPASTA(

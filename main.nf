@@ -37,7 +37,7 @@ workflow {
         )
 
         Krona(
-            Kraken2.out.brack_report
+            BRACKEN.out.brack_report
         )
 
         TAXPASTA(

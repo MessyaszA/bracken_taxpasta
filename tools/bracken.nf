@@ -44,7 +44,7 @@ process BRACKEN {
         path(db)
 
     output:
-        path("*.brackreport"), emit: brack_report
+        tuple val(meta), path("*.brackreport"), emit: brack_report
         path("*_bracken.tsv"), emit: tsv
 
     script:
